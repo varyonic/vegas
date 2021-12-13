@@ -16,6 +16,7 @@ module Vegas
   class Runner
     attr_reader :app, :app_name, :filesystem_friendly_app_name, :quoted_app_name,
       :rack_handler, :port, :host, :options, :args
+    attr_reader :should_kill
 
     ROOT_DIR = ENV['HOME'] ? File.expand_path(File.join('~', '.vegas')) : nil
     PORT       = 5678
@@ -44,7 +45,7 @@ module Vegas
         end
       end
 
-      if @should_kill
+      if should_kill
         kill!
         exit!(0)
       end
