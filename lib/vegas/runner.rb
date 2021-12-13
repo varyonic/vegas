@@ -156,7 +156,7 @@ module Vegas
     end
 
     def check_for_running(path = nil)
-      if File.exists?(pid_file) && File.exists?(url_file)
+      if File.exist?(pid_file) && File.exist?(url_file)
         running_url = File.read(url_file)
         if !port_open?(running_url)
           logger.warn "#{quoted_app_name} is already running at #{running_url}"
@@ -228,10 +228,10 @@ module Vegas
     end
 
     def status
-      if File.exists?(pid_file)
+      if File.exist?(pid_file)
         logger.info "#{quoted_app_name} running"
         logger.info "PID #{File.read(pid_file)}"
-        logger.info "URL #{File.read(url_file)}" if File.exists?(url_file)
+        logger.info "URL #{File.read(url_file)}" if File.exist?(url_file)
       else
         logger.info "#{quoted_app_name} not running!"
       end
